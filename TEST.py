@@ -29,6 +29,8 @@ async def cnfrm_media_to_chat(msg: types.Message, state: FSMContext):
     await msg.answer('Ты уверен в отправке?', reply_markup=yes_no_kb)
     await state.set_state(RepostDataToChat.confirm_media)
 
+# почему-то на этом этапе id медиафайла не передаётся из состояния выше в состояние ниже, и консоль выдаёт ошибку
+
 @dp.message(RepostDataToChat.confirm_media)
 async def send_media_to_chat(msg: types.Message, state: FSMContext):
     if msg.text == 'Да':
