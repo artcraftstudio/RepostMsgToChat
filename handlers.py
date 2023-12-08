@@ -21,7 +21,8 @@ async def input_msg_to_chat(msg: types.Message, state: FSMContext):
                 await msg.answer(f'Напиши мне текст, который хочешь переслать в чат')
                 await state.set_state(RepostDataToChat.input_text)
 
-# в идеале, конечно, вот здесь добавить выбор чата, а дальше уже предложение написать текст
+# в идеале, конечно, вот здесь добавить выбор чата, а дальше уже предложение написать текст. Тогда уже
+# можно не импортировать переменную GROUP_CHAT
 
 @router.message(RepostDataToChat.input_text, F.text)
 async def confirm_msg_to_chat(msg: types.Message, state: FSMContext):
