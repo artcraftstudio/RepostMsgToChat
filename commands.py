@@ -1,6 +1,7 @@
 from aiogram import Router, types
 from aiogram.filters import Command
 
+# в конфиге, соответственно, этим переменным присвоены айдишники
 from config import ALLOWED_USERS, TestChat1, TestChat2
 from keyboards import master_kb_bot
 
