@@ -5,7 +5,7 @@ from aiogram.fsm.context import FSMContext
 from config import TOKEN, ALLOWED_USERS
 from keyboards import yes_no_kb, master_kb_bot
 from states import RepostDataToChat
-# здесь должна импортироваться переменная со значением после одной из команд
+# здесь должна импортироваться переменная со значением после одной из команд, но она не импортируется
 from commands import GROUP_CHAT
 
 
