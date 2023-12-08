@@ -25,6 +25,7 @@ async def cmd_start(msg: types.Message) -> None:
               reply_markup=user_kb_bot
         )
 
+# здесь я пытался менять значение переменной с помощью команды и импортировать переменную GROUP_CHAT в другом файле. Но это не работает, GROUP_CHAT не импортируется
 @router.message(Command('testchat1'))
 async def testchat1(msg: types.Message) -> None:
     if msg.chat.type != 'private':
