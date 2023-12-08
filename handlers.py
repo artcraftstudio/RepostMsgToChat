@@ -11,6 +11,7 @@ from commands import GROUP_CHAT
 
 router = Router()
 bot = Bot(TOKEN)
+# пока я решаю вопрос выбора чата присвоением GROUP_CHAT = TestChat1
 
 
 # Блок хэндлеров для репоста сообщений в чат
