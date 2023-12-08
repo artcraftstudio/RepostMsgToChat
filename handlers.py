@@ -21,6 +21,8 @@ async def input_msg_to_chat(msg: types.Message, state: FSMContext):
                 await msg.answer(f'Напиши мне текст, который хочешь переслать в чат')
                 await state.set_state(RepostDataToChat.input_text)
 
+# в идеале, конечно, вот здесь добавить выбор чата, а дальше уже предложение написать текст
+
 @router.message(RepostDataToChat.input_text, F.text)
 async def confirm_msg_to_chat(msg: types.Message, state: FSMContext):
     text=msg.text
@@ -54,6 +56,8 @@ async def input_media_to_chat(msg: types.Message, state: FSMContext):
 
 # я хотел тут вставить такую же проверку, как с отправкой текста, но file.id не получалось провести через состояние. Такой код работает, но если добавить 
 # проверку "Уверен ли пользователь в отправке?", то код выдаёт ошибку, что нет атрибута file.id
+
+# как и для текстового сообщения, здесь бы добавить выбор чата
 
 @router.message(RepostDataToChat.input_media, F.photo | F.audio | F.video | F.animation)
 async def send_media_to_chat(msg: types.Message, state: FSMContext):
