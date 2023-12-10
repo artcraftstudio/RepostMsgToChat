@@ -1,7 +1,7 @@
 from aiogram import Router, types
 from aiogram.filters import Command
 
-from config import ALLOWED_USERS, TestChat1, TestChat2
+from config import ALLOWED_USERS
 from keyboards import master_kb_bot
 
 
