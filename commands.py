@@ -1,7 +1,6 @@
 from aiogram import Router, types
 from aiogram.filters import Command
 
-# в конфиге, соответственно, этим переменным присвоены айдишники
 from config import ALLOWED_USERS, TestChat1, TestChat2
 from keyboards import master_kb_bot
 
@@ -22,19 +21,9 @@ async def cmd_start(msg: types.Message) -> None:
     else:
         await msg.answer('Привет!')
 
-# здесь я пытался менять значение переменной с помощью команды и импортировать переменную GROUP_CHAT в другом файле. Но это не работает, GROUP_CHAT не импортируется
-@router.message(Command('testchat1'))
-async def testchat1(msg: types.Message) -> None:
-    if msg.chat.type != 'private':
-        return
-    elif msg.from_user.id in ALLOWED_USERS:
-        GROUP_CHAT = TestChat1
-        await msg.reply('Переменной GROUP_CHAT присвоено значение TestChat1')
-
-@router.message(Command('testchat2'))
-async def chat(msg: types.Message) -> None:
-    if msg.chat.type != 'private':
-        return
-    elif msg.from_user.id in ALLOWED_USERS:
-        GROUP_CHAT = TestChat2
-        await msg.reply('Переменной GROUP_CHAT присвоено значение TestChat2')
+# идея в том, что после этой команды пользователю предлагается ввести значение. А дальше переменная импортируется в файле handlers
+@router.message(Command('changechat'))
+async def change_chat(msg: types.Message) -> None:
+    global GROUP_CHAT
+    await msg.reply('Введи значение переменной GROUP_CHAT:')
+    GROUP_CHAT = await msg.get_args()
