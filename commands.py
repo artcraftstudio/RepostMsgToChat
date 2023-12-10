@@ -20,10 +20,3 @@ async def cmd_start(msg: types.Message) -> None:
         )
     else:
         await msg.answer('Привет!')
-
-# идея в том, что после этой команды пользователю предлагается ввести значение. А дальше переменная импортируется в файле handlers
-@router.message(Command('changechat'))
-async def change_chat(msg: types.Message) -> None:
-    global GROUP_CHAT
-    await msg.reply('Введи значение переменной GROUP_CHAT:')
-    GROUP_CHAT = await msg.get_args()
