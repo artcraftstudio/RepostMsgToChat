@@ -2,16 +2,14 @@ import asyncio
 from aiogram import Bot, Router, types, F
 from aiogram.fsm.context import FSMContext
 
-from config import TOKEN, ALLOWED_USERS
+from config import TOKEN, ALLOWED_USERS, TestChat1
 from keyboards import yes_no_kb, master_kb_bot
 from states import RepostDataToChat
-# здесь должна импортироваться переменная со значением после одной из команд, но она не импортируется
-from commands import GROUP_CHAT
 
 
 router = Router()
 bot = Bot(TOKEN)
-# пока я решаю вопрос выбора чата присвоением GROUP_CHAT = TestChat1
+GROUP_CHAT = TestChat1
 
 
 # Блок хэндлеров для репоста сообщений в чат
@@ -22,8 +20,7 @@ async def input_msg_to_chat(msg: types.Message, state: FSMContext):
                 await msg.answer(f'Напиши мне текст, который хочешь переслать в чат')
                 await state.set_state(RepostDataToChat.input_text)
 
-# в идеале, конечно, вот здесь добавить выбор чата, а дальше уже предложение написать текст. Тогда уже
-# можно не импортировать переменную GROUP_CHAT
+# в идеале, конечно, вот здесь добавить выбор чата, а дальше уже предложение написать текст
 
 @router.message(RepostDataToChat.input_text, F.text)
 async def confirm_msg_to_chat(msg: types.Message, state: FSMContext):
