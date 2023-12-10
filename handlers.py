@@ -2,7 +2,7 @@ import asyncio
 from aiogram import Bot, Router, types, F
 from aiogram.fsm.context import FSMContext
 
-from config import TOKEN, ALLOWED_USERS, TestChat1
+from config import TOKEN, ALLOWED_USERS, TestChat1, TestChat2
 from keyboards import yes_no_kb, master_kb_bot
 from states import RepostDataToChat
 
